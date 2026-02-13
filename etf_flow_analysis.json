@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-02-13T11:17:27.953424",
+  "ai_analysis": "AI Analysis Unavailable",
+  "top_flows": [
+    {
+      "category": "Sector",
+      "ticker": "XLE",
+      "name": "Energy",
+      "price": 53.98,
+      "change_1d": -1.82,
+      "flow_score": 80.5,
+      "vol_ratio": 0.88,
+      "momentum_20d": 13.38
+    },
+    {
+      "category": "Sector",
+      "ticker": "XLP",
+      "name": "Consumer Staples",
+      "price": 89.21,
+      "change_1d": 0.92,
+      "flow_score": 80.3,
+      "vol_ratio": 1.12,
+      "momentum_20d": 8.3
+    },
+    {
+      "category": "Sector",
+      "ticker": "XLB",
+      "name": "Materials",
+      "price": 52.83,
+      "change_1d": -1.47,
+      "flow_score": 78.9,
+      "vol_ratio": 0.99,
+      "momentum_20d": 7.9
+    },
+    {
+      "category": "Data",
+      "ticker": "USO",
+      "name": "Oil",
+      "price": 76.38,
+      "change_1d": -3.18,
+      "flow_score": 77.8,
+      "vol_ratio": 0.91,
+      "momentum_20d": 7.38
+    },
+    {
+      "category": "Sector",
+      "ticker": "XLU",
+      "name": "Utilities",
+      "price": 45.25,
+      "change_1d": 1.48,
+      "flow_score": 77.7,
+      "vol_ratio": 1.08,
+      "momentum_20d": 3.76
+    }
+  ],
+  "bottom_flows": [
+    {
+      "category": "Sector",
+      "ticker": "XLC",
+      "name": "Comm Services",
+      "price": 114.64,
+      "change_1d": -1.8,
+      "flow_score": 23.6,
+      "vol_ratio": 0.93,
+      "momentum_20d": -1.35
+    },
+    {
+      "category": "Broad Market",
+      "ticker": "IWM",
+      "name": "Russell 2000",
+      "price": 259.54,
+      "change_1d": -2.04,
+      "flow_score": 22.8,
+      "vol_ratio": 0.89,
+      "momentum_20d": -2.25
+    },
+    {
+      "category": "Data",
+      "ticker": "XBI",
+      "name": "Biotech",
+      "price": 123.18,
+      "change_1d": -1.18,
+      "flow_score": 22.5,
+      "vol_ratio": 0.8,
+      "momentum_20d": -0.94
+    },
+    {
+      "category": "Broad Market",
+      "ticker": "VTI",
+      "name": "Total Stock Market",
+      "price": 336.01,
+      "change_1d": -1.6,
+      "flow_score": 21.4,
+      "vol_ratio": 0.73,
+      "momentum_20d": -1.77
+    },
+    {
+      "category": "Data",
+      "ticker": "ARKK",
+      "name": "Innovation",
+      "price": 68.45,
+      "change_1d": -3.41,
+      "flow_score": 19.8,
+      "vol_ratio": 1.3,
+      "momentum_20d": -16.45
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "updated": "2026-02-10T22:56:47.594454",
+  "events": [
+    {
+      "date": "2025-12-10",
+      "event": "FOMC Interest Rate Decision",
+      "impact": "High",
+      "description": "Fed rate decision.\n\n[AI] AI: The FOMC's interest rate decisions significantly influence borrowing costs, impacting economic growth and inflation. Higher rates generally lead to reduced spending and investment, strengthening the dollar and potentially lowering inflation, while lower rates encourage economic activity and can weaken the dollar and increase inflation.\n"
+    }
+  ],
+  "week_start": "2026-02-10"
+}

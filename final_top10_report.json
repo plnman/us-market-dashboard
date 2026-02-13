@@ -1,0 +1,69 @@
+{
+  "top_picks": [
+    {
+      "ticker": "BALL",
+      "name": "Ball Corporation",
+      "final_score": 83.3,
+      "quant_score": 79.1,
+      "ai_recommendation": "Strong Buy",
+      "current_price": 67.76,
+      "price_at_analysis": 67.76,
+      "target_price": 84.7,
+      "ai_summary": "AI Summary for Ball Corporation (BALL): Strong institutional support with a composite score of 79.1. Technical indicators show positive momentum.",
+      "sector": "N/A",
+      "rank": 1
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co., Inc.",
+      "final_score": 82.2,
+      "quant_score": 77.8,
+      "ai_recommendation": "Strong Buy",
+      "current_price": 117.15,
+      "price_at_analysis": 117.15,
+      "target_price": 146.44,
+      "ai_summary": "AI Summary for Merck & Co., Inc. (MRK): Strong institutional support with a composite score of 77.8. Technical indicators show positive momentum.",
+      "sector": "N/A",
+      "rank": 2
+    },
+    {
+      "ticker": "CTRA",
+      "name": "Coterra Energy Inc.",
+      "final_score": 82.1,
+      "quant_score": 77.6,
+      "ai_recommendation": "Strong Buy",
+      "current_price": 30.56,
+      "price_at_analysis": 30.56,
+      "target_price": 38.2,
+      "ai_summary": "AI Summary for Coterra Energy Inc. (CTRA): Strong institutional support with a composite score of 77.6. Technical indicators show positive momentum.",
+      "sector": "N/A",
+      "rank": 3
+    },
+    {
+      "ticker": "HBAN",
+      "name": "Huntington Bancshares Incorporated",
+      "final_score": 81.7,
+      "quant_score": 77.1,
+      "ai_recommendation": "Strong Buy",
+      "current_price": 18.57,
+      "price_at_analysis": 18.57,
+      "target_price": 23.21,
+      "ai_summary": "AI Summary for Huntington Bancshares Incorporated (HBAN): Strong institutional support with a composite score of 76.6. Technical indicators show positive momentum.",
+      "sector": "N/A",
+      "rank": 4
+    },
+    {
+      "ticker": "DVN",
+      "name": "Devon Energy Corporation",
+      "final_score": 81.4,
+      "quant_score": 76.8,
+      "ai_recommendation": "Strong Buy",
+      "current_price": 43.48,
+      "price_at_analysis": 43.48,
+      "target_price": 54.35,
+      "ai_summary": "AI Summary for Devon Energy Corporation (DVN): Strong institutional support with a composite score of 76.8. Technical indicators show positive momentum.",
+      "sector": "N/A",
+      "rank": 5
+    }
+  ]
+}
