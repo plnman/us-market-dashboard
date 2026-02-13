@@ -611,6 +611,8 @@ def get_us_macro_analysis():
                 macro_indicators = cached.get('macro_indicators', {})
         
         # === UPDATE KEY INDICATORS WITH LIVE DATA ===
+        # DISABLED: Helper logic for Render
+        """
         live_tickers = {
             'VIX': '^VIX',
             'SPY': 'SPY',
@@ -642,6 +644,7 @@ def get_us_macro_analysis():
                     print(f"Error fetching live {name}: {e}")
         except Exception as e:
             print(f"Error in live data loop: {e}")
+        """
         
         return jsonify({
             'macro_indicators': macro_indicators,
