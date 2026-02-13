@@ -7,7 +7,7 @@ import yfinance as yf
 import subprocess
 from flask import Flask, render_template, jsonify, request
 import traceback
-from datetime import datetime
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
