@@ -424,42 +424,7 @@ def get_us_etf_flows():
         print(f"Error getting ETF flows: {e}")
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/us/stock-chart/<ticker>')
-def get_us_stock_chart(ticker):
-    """Get US stock chart data (OHLC) for candlestick chart"""
-    try:
-        # Get period from query params (default: 1y)
-        period = request.args.get('period', '1y')
-        valid_periods = ['1mo', '3mo', '6mo', '1y', '2y', '5y', 'max']
-        if period not in valid_periods:
-            period = '1y'
-        
-        stock = yf.Ticker(ticker)
-        hist = stock.history(period=period)
-        
-        if hist.empty:
-            return jsonify({'error': f'No data found for {ticker}'}), 404
-        
-        # Format for Lightweight Charts
-        candles = []
-        for date, row in hist.iterrows():
-            candles.append({
-                'time': int(date.timestamp()),
-                'open': round(row['Open'], 2),
-                'high': round(row['High'], 2),
-                'low': round(row['Low'], 2),
-                'close': round(row['Close'], 2)
-            })
-        
-        return jsonify({
-            'ticker': ticker,
-            'period': period,
-            'candles': candles
-        })
-        
-    except Exception as e:
-        print(f"Error getting US stock chart for {ticker}: {e}")
-        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/api/us/history-dates')
 def get_us_history_dates():
