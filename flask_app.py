@@ -188,6 +188,8 @@ def get_us_portfolio_data():
         # 2. Fallback to live fetching (if file missing)
         market_indices = []
         
+        # DISABLED: Helper logic for Render
+        """
         # US Market Indices
         indices_map = {
             '^DJI': 'Dow Jones',
@@ -233,6 +235,7 @@ def get_us_portfolio_data():
                     })
             except Exception as e:
                 print(f"Error fetching {ticker} ({name}): {e}")
+        """
 
         return jsonify({
             'market_indices': market_indices,
