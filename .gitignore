@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Flask
+instance/
+.webassets-cache
+
+# Environment
+.env
+.env.local
+
+# Large Data Files (Generated on deployment)
+us_daily_prices.csv
+*.json
+*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test files
+test_*.py
+*_test.py
+
+# Scripts (배포 시 불필요)
+restart_flask.bat
+share_setup.bat
+add_*.py
+fix_*.py
+improve_*.py
+insert_*.py
+enhance_*.py
+verify_*.py

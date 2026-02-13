@@ -1,0 +1,10 @@
+Flask==3.0.0
+pandas==2.1.4
+numpy==1.26.2
+yfinance==0.2.33
+ta==0.11.0
+python-dotenv==1.0.0
+requests==2.31.0
+tqdm==4.66.1
+google-generativeai==0.3.1
+gunicorn==21.2.0
