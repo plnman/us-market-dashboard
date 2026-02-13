@@ -7,6 +7,10 @@
     <title>Korean Market - AI Stock Analysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lightweight-charts@3.8.0/dist/lightweight-charts.standalone.production.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/lightweight-charts@3.8.0/dist/lightweight-charts.standalone.production.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/lightweight-charts@3.8.0/dist/lightweight-charts.standalone.production.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -1111,10 +1115,10 @@
                 const analysisDate = data.analysis_date || '';
                 const avgScore = data.summary?.avg_score || 0;
                 summary.innerHTML = `<span class="text-purple-400">📅 분석일: ${analysisDate}</span> | 평균: ${avgScore}점`;
-                
+
                 // Call updateDateHeaders function
                 updateDateHeaders(analysisDate);
-                
+
                 // Update last update time
                 const lastUpdateTimeEl = document.getElementById('last-update-time');
                 if (lastUpdateTimeEl) {
@@ -1319,9 +1323,27 @@
 
             // Fetch and render chart
             try {
-                chartContainer.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500"><i class="fas fa-spinner fa-spin text-2xl"></i></div>';
+                // Force container height
+                chartContainer.style.height = '300px';
+                chartContainer.style.position = 'relative';
+                chartContainer.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500"><i class="fas fa-spinner fa-spin text-2xl"></i> <span class="ml-2">Loading Chart...</span></div>';
+
+                // Wait a bit to ensure library load
+                if (typeof LightweightCharts === 'undefined') {
+                    await new Promise(r => setTimeout(r, 1000)); // wait 1s
+                }
+
+                // Ensure Library is loaded
+                if (typeof LightweightCharts === 'undefined') {
+                    chartContainer.innerHTML = '<div class="flex items-center justify-center h-full text-red-500 flex-col"><i class="fas fa-exclamation-triangle mb-2"></i><span>Chart Library Not Loaded</span><span class="text-xs text-gray-400 mt-1">Check internet connection or CDN</span></div>';
+                    return;
+                }
 
                 const response = await fetch(`/api/us/stock-chart/${pick.ticker}?period=${usePeriod}`);
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
                 const data = await response.json();
 
                 if (data.error) {
@@ -1329,16 +1351,29 @@
                     return;
                 }
 
+                if (!data.candles || data.candles.length === 0) {
+                    chartContainer.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500">No price data for ${pick.ticker}</div>`;
+                    return;
+                }
+
                 // Clear container and create chart
                 chartContainer.innerHTML = '';
 
+                // Dispose previous chart if exists
                 if (usStockChart) {
-                    usStockChart.remove();
+                    try {
+                        usStockChart.remove();
+                    } catch (e) { console.warn("Chart remove error", e); }
+                    usStockChart = null;
                 }
 
+                // Double check container dimensions
+                const containerWidth = chartContainer.clientWidth || chartContainer.parentElement.clientWidth || 600;
+                const containerHeight = chartContainer.clientHeight || 300;
+
                 usStockChart = LightweightCharts.createChart(chartContainer, {
-                    width: chartContainer.clientWidth,
-                    height: 300,
+                    width: containerWidth,
+                    height: containerHeight,
                     layout: { background: { color: '#1a1a1a' }, textColor: '#999' },
                     grid: { vertLines: { color: '#2a2a2a' }, horzLines: { color: '#2a2a2a' } },
                     timeScale: {
@@ -1364,6 +1399,16 @@
 
                 candleSeries.setData(data.candles);
                 usStockChart.timeScale().fitContent();
+
+                // Add ResizeObserver for responsiveness
+                const resizeObserver = new ResizeObserver(entries => {
+                    if (entries.length === 0 || entries[0].target !== chartContainer) { return; }
+                    const newRect = entries[0].contentRect;
+                    if (usStockChart) {
+                        usStockChart.applyOptions({ width: newRect.width, height: newRect.height });
+                    }
+                });
+                resizeObserver.observe(chartContainer);
 
                 // Reset and reload indicators for new stock
                 indicatorData = null;
@@ -1391,7 +1436,7 @@
 
             } catch (e) {
                 console.error('Error loading US stock chart:', e);
-                chartContainer.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500">Failed to load chart</div>';
+                chartContainer.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500">Error: ${e.message}</div>`;
             }
         }
 
@@ -1620,17 +1665,17 @@
 
                 // Parse AI summary to extract different sections
                 const summary = data.summary || '';
-                
+
                 // Extract sections using markers or split by newlines
                 const lines = summary.split('\n').filter(line => line.trim());
 
-                
+
                 // Main analysis (first paragraph or summary)
                 let mainText = '';
                 let keyPoints = '';
                 let risks = '';
                 let recommendation = '';
-                
+
                 // Simple parsing - look for keywords
                 lines.forEach((line, idx) => {
                     const lower = line.toLowerCase();
@@ -1645,7 +1690,7 @@
                         mainText += line + ' ';
                     }
                 });
-                
+
                 // Fallback: if sections not found, use full summary
                 if (!mainText) mainText = summary;
                 if (!keyPoints) keyPoints = '기관 매수세, 기술적 모멘텀 긍정적';
@@ -1655,7 +1700,7 @@
                     const rec = data.recommendation || data.ai_recommendation || '분석 중';
                     recommendation = rec;
                 }
-                
+
                 // Update UI
                 if (mainAnalysisEl) {
                     let htmlText = mainText
@@ -1663,7 +1708,7 @@
                         .replace(/## (.*)/g, '<strong class="text-white">$1</strong>');
                     mainAnalysisEl.innerHTML = htmlText;
                 }
-                
+
                 if (keyPointsEl) keyPointsEl.textContent = keyPoints;
                 if (risksEl) risksEl.textContent = risks;
                 if (recommendationEl) {
@@ -1789,66 +1834,134 @@
         }
 
 
-        // Update all data function
-        async function updateAllData() {
-            const updateBtn = document.getElementById('update-data-btn');
-            const updateIcon = document.getElementById('update-icon');
-            const lastUpdateTimeEl = document.getElementById('last-update-time');
-            
+        if (updateIcon) {
+            updateIcon.classList.add('fa-spin');
+        }
+
+        if (lastUpdateTimeEl) {
+            lastUpdateTimeEl.textContent = '업데이트 중... (예상 시간: 10-15초)';
+        }
+
+        try {
+            // Parallel fetching for performance
+            await Promise.all([
+                updateUSMarketDashboard(),
+                loadSectorHeatmap()
+            ]);
+
+            if (lastUpdateTimeEl) {
+                const now = new Date();
+                const updateStr = now.toLocaleString('ko-KR', {
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                lastUpdateTimeEl.textContent = `마지막 업데이트: ${updateStr}`;
+            }
+        } catch (e) {
+            console.error('Update failed:', e);
+            if (lastUpdateTimeEl) {
+                lastUpdateTimeEl.textContent = '업데이트 실패';
+            }
+        } finally {
             if (updateBtn) {
-                updateBtn.disabled = true;
-                updateBtn.classList.add('opacity-50');
+                updateBtn.disabled = false;
+                updateBtn.classList.remove('opacity-50');
             }
             if (updateIcon) {
-                updateIcon.classList.add('fa-spin');
-            }
-            
-            if (lastUpdateTimeEl) {
-                lastUpdateTimeEl.textContent = '업데이트 중... (예상 시간: 10-15초)';
-            }
-            
-            try {
-                await updateUSMarketDashboard();
-                
-                if (lastUpdateTimeEl) {
-                    const now = new Date();
-                    const updateStr = now.toLocaleString('ko-KR', {
-                        month: '2-digit',
-                        day: '2-digit',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-                    lastUpdateTimeEl.textContent = `마지막 업데이트: ${updateStr}`;
-                }
-            } catch (e) {
-                console.error('Update failed:', e);
-                if (lastUpdateTimeEl) {
-                    lastUpdateTimeEl.textContent = '업데이트 실패';
-                }
-            } finally {
-                if (updateBtn) {
-                    updateBtn.disabled = false;
-                    updateBtn.classList.remove('opacity-50');
-                }
-                if (updateIcon) {
-                    updateIcon.classList.remove('fa-spin');
-                }
+                updateIcon.classList.remove('fa-spin');
             }
         }
-        
+        }
+
+        async function loadSectorHeatmap() {
+            const container = document.getElementById('us-sector-heatmap');
+            if (!container) return;
+
+            try {
+                const response = await fetch('/api/us/sector-heatmap');
+                const data = await response.json();
+
+                if (data.error) {
+                    container.innerHTML = `<div class="flex items-center justify-center h-full text-red-400">${data.error}</div>`;
+                    return;
+                }
+
+                // Clear loading message
+                container.innerHTML = '';
+
+                // Check if we have series data
+                if (!data.series || data.series.length === 0) {
+                    container.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500">데이터 없음</div>';
+                    return;
+                }
+
+                const options = {
+                    series: data.series,
+                    legend: {
+                        show: true
+                    },
+                    chart: {
+                        height: 350,
+                        type: 'treemap',
+                        toolbar: { show: false },
+                        background: 'transparent'
+                    },
+                    title: {
+                        text: 'S&P 500 Sector Performance',
+                        align: 'center',
+                        style: { color: '#fff' }
+                    },
+                    colors: [
+                        '#00C853', '#4CAF50', '#81C784', // Green
+                        '#EF9A9A', '#F44336', '#B71C1C'  // Red
+                    ],
+                    plotOptions: {
+                        treemap: {
+                            distributed: true,
+                            enableShades: false
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        style: { fontSize: '12px' },
+                        formatter: function (text, op) {
+                            return [text, op.value];
+                        }
+                    },
+                    tooltip: {
+                        theme: 'dark',
+                        y: {
+                            formatter: function (item) {
+                                return item;
+                            }
+                        }
+                    }
+                };
+
+                const chart = new ApexCharts(container, options);
+                chart.render();
+
+            } catch (e) {
+                console.error('Error loading heatmap:', e);
+                container.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500">로드 실패</div>';
+            }
+        }
+
         // Update date/time headers
         function updateDateHeaders(analysisDate) {
             const recDateHeader = document.getElementById('rec-date-header');
             const currentDateHeader = document.getElementById('current-date-header');
-            
+
             if (recDateHeader && analysisDate) {
                 recDateHeader.textContent = `(${analysisDate})`;
             }
-            
+
             if (currentDateHeader) {
                 const now = new Date();
-                const dateStr = now.toLocaleDateString('ko-KR', {month: '2-digit', day: '2-digit'});
-                const timeStr = now.toLocaleTimeString('ko-KR', {hour: '2-digit', minute: '2-digit'});
+                const dateStr = now.toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' });
+                const timeStr = now.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
                 currentDateHeader.textContent = `(${dateStr} ${timeStr})`;
             }
         }
@@ -1859,14 +1972,14 @@
             const progress = document.getElementById('reanalyze-progress');
             const reanalyzeBtn = document.getElementById('reanalyze-btn');
             const updateBtn = document.getElementById('update-data-btn');
-            
+
             // Disable all buttons
             if (reanalyzeBtn) reanalyzeBtn.disabled = true;
             if (updateBtn) updateBtn.disabled = true;
-            
+
             // Show modal
             modal.classList.remove('hidden');
-            
+
             // Simulate progress steps
             setTimeout(() => {
                 progress.style.width = '33%';
@@ -1874,27 +1987,27 @@
                 document.getElementById('progress-step-2').classList.remove('hidden');
                 document.getElementById('progress-step-2').classList.add('flex');
             }, 10000);
-            
+
             setTimeout(() => {
                 progress.style.width = '66%';
                 document.getElementById('progress-step-2').classList.add('hidden');
                 document.getElementById('progress-step-3').classList.remove('hidden');
                 document.getElementById('progress-step-3').classList.add('flex');
             }, 25000);
-            
+
             try {
-                const response = await fetch('/api/us/reanalyze', { 
+                const response = await fetch('/api/us/reanalyze', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                 });
                 const data = await response.json();
-                
+
                 // Complete
                 progress.style.width = '100%';
                 document.getElementById('progress-step-3').classList.add('hidden');
                 document.getElementById('progress-complete').classList.remove('hidden');
                 document.getElementById('progress-complete').classList.add('flex');
-                
+
                 if (data.success) {
                     setTimeout(async () => {
                         try {
@@ -1929,44 +2042,44 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
 
-    // Check for viewer mode
-    const urlParams = new URLSearchParams(window.location.search);
-    const isViewerMode = urlParams.get('mode') === 'viewer';
-    
-    if (isViewerMode) {
-        console.log('Viewer mode activated - read only');
-        
-        // Disable control buttons (keep visible)
-        const updateBtn = document.getElementById('update-data-btn');
-        const reanalyzeBtn = document.getElementById('reanalyze-btn');
-        const dateSelect = document.getElementById('us-history-date-select');
-        
-        if (updateBtn) {
-            updateBtn.disabled = true;
-            updateBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            updateBtn.title = '뷰어 모드에서는 사용할 수 없습니다';
-        }
-        if (reanalyzeBtn) {
-            reanalyzeBtn.disabled = true;
-            reanalyzeBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            reanalyzeBtn.title = '뷰어 모드에서는 사용할 수 없습니다';
-        }
-        if (dateSelect) {
-            dateSelect.disabled = true;
-            dateSelect.classList.add('opacity-50', 'cursor-not-allowed');
-        }
-        
-        // Add viewer mode badge
-        const header = document.querySelector('header');
-        if (header) {
-            const badge = document.createElement('div');
-            badge.className = 'fixed top-4 right-4 bg-blue-600 text-white px-3 py-1 text-xs rounded-full shadow-lg z-50 flex items-center gap-2';
-            badge.innerHTML = '<i class="fas fa-eye"></i> 뷰어 모드 (읽기 전용)';
-            document.body.appendChild(badge);
-        }
-    }
-    
-    
+            // Check for viewer mode
+            const urlParams = new URLSearchParams(window.location.search);
+            const isViewerMode = urlParams.get('mode') === 'viewer';
+
+            if (isViewerMode) {
+                console.log('Viewer mode activated - read only');
+
+                // Disable control buttons (keep visible)
+                const updateBtn = document.getElementById('update-data-btn');
+                const reanalyzeBtn = document.getElementById('reanalyze-btn');
+                const dateSelect = document.getElementById('us-history-date-select');
+
+                if (updateBtn) {
+                    updateBtn.disabled = true;
+                    updateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    updateBtn.title = '뷰어 모드에서는 사용할 수 없습니다';
+                }
+                if (reanalyzeBtn) {
+                    reanalyzeBtn.disabled = true;
+                    reanalyzeBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    reanalyzeBtn.title = '뷰어 모드에서는 사용할 수 없습니다';
+                }
+                if (dateSelect) {
+                    dateSelect.disabled = true;
+                    dateSelect.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+
+                // Add viewer mode badge
+                const header = document.querySelector('header');
+                if (header) {
+                    const badge = document.createElement('div');
+                    badge.className = 'fixed top-4 right-4 bg-blue-600 text-white px-3 py-1 text-xs rounded-full shadow-lg z-50 flex items-center gap-2';
+                    badge.innerHTML = '<i class="fas fa-eye"></i> 뷰어 모드 (읽기 전용)';
+                    document.body.appendChild(badge);
+                }
+            }
+
+
             try {
                 updateUSMarketDashboard(); // Initial dashboard load
             } catch (e) {
@@ -1985,11 +2098,13 @@
                 </div>
                 <h3 class="text-xl font-bold text-white mb-2">데이터 재분석 중</h3>
                 <p class="text-gray-400 text-sm mb-4">AI가 새로운 Top 10 종목을 분석하고 있습니다...</p>
-                
+
                 <div class="bg-[#0a0a0a] rounded-full h-4 mb-4 overflow-hidden">
-                    <div id="reanalyze-progress" class="bg-gradient-to-r from-purple-600 to-pink-600 h-full transition-all duration-500" style="width: 0%"></div>
+                    <div id="reanalyze-progress"
+                        class="bg-gradient-to-r from-purple-600 to-pink-600 h-full transition-all duration-500"
+                        style="width: 0%"></div>
                 </div>
-                
+
                 <div class="space-y-2 text-left text-xs text-gray-500">
                     <div id="progress-step-1" class="flex items-center">
                         <i class="fas fa-spinner fa-spin mr-2"></i>
@@ -2008,7 +2123,7 @@
                         <span>완료! 대시보드 새로고침 중...</span>
                     </div>
                 </div>
-                
+
                 <p class="text-xs text-gray-600 mt-4">예상 시간: 30-60초</p>
             </div>
         </div>

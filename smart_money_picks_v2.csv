@@ -1,0 +1,358 @@
+ticker,name,composite_score,grade,sd_score,inst_score,tech_score,fund_score,analyst_score,rs_score,current_price,target_upside,rank
+BALL,Ball Corporation,79.1,A (Buy),95,70,68,75,75,90,67.76,3.5,1
+CF,"CF Industries Holdings, Inc.",77.8,A (Buy),80,65,90,90,50,83,96.31,-5.3,2
+MRK,"Merck & Co., Inc.",77.8,A (Buy),90,70,73,75,75,80,117.15,5.5,3
+CTRA,Coterra Energy Inc.,77.6,A (Buy),90,65,68,85,75,83,30.56,7.5,4
+FITB,Fifth Third Bancorp,77.6,A (Buy),85,60,83,75,75,90,54.5,4.9,5
+HBAN,Huntington Bancshares Incorporated,77.1,A (Buy),85,60,83,80,80,73,18.57,10.4,6
+DTE,DTE Energy Company,76.8,A (Buy),75,70,90,80,75,65,137.84,6.9,7
+DVN,Devon Energy Corporation,76.8,A (Buy),90,65,68,75,75,90,43.48,9.3,8
+GILD,"Gilead Sciences, Inc.",76.1,A (Buy),85,70,68,75,70,90,147.23,-1.0,9
+ROST,"Ross Stores, Inc.",76.0,A (Buy),75,70,90,70,75,73,192.33,3.4,10
+FDX,FedEx Corporation,75.8,A (Buy),90,70,68,75,55,90,367.95,-10.6,11
+WM,"Waste Management, Inc.",75.8,A (Buy),85,70,80,65,75,73,231.72,8.6,12
+IEX,IDEX Corporation,75.8,A (Buy),95,65,68,60,75,90,214.58,4.2,13
+VZ,Verizon Communications Inc.,75.6,A (Buy),85,65,68,75,75,90,47.39,4.1,14
+MOS,The Mosaic Company,75.6,A (Buy),75,65,73,85,75,90,30.12,7.2,15
+CMCSA,Comcast Corporation,75.3,A (Buy),85,70,68,80,55,90,32.31,2.3,16
+TER,"Teradyne, Inc.",75.3,A (Buy),95,65,68,60,70,90,304.89,-1.1,17
+OKE,"ONEOK, Inc.",75.3,A (Buy),85,60,68,80,75,90,83.46,4.6,18
+KEY,KeyCorp,75.3,A (Buy),80,70,73,75,75,80,22.94,6.6,19
+JNJ,Johnson & Johnson,75.1,A (Buy),85,65,68,75,70,90,238.35,-3.0,20
+CL,Colgate-Palmolive Company,75.1,A (Buy),85,70,68,65,75,90,93.93,1.5,21
+DE,Deere & Company,75.1,A (Buy),90,70,68,70,55,90,593.41,-11.0,22
+PNC,"The PNC Financial Services Group, Inc.",75.1,A (Buy),75,70,73,75,75,90,240.33,3.5,23
+T,AT&T Inc.,74.9,A (Buy),85,65,68,75,75,83,27.41,7.0,24
+AMGN,Amgen Inc.,74.9,A (Buy),85,70,73,65,70,83,364.65,-5.7,25
+PG,The Procter & Gamble Company,74.9,A (Buy),85,65,68,75,75,83,159.08,5.3,26
+CB,Chubb Limited,74.9,A (Buy),85,70,68,75,75,73,326.25,3.1,27
+BKR,Baker Hughes Company,74.8,A (Buy),85,65,68,70,75,90,59.15,1.0,28
+LNT,Alliant Energy Corporation,74.8,A (Buy),80,65,83,75,75,65,68.01,6.5,29
+CMI,Cummins Inc.,74.5,A (Buy),85,70,70,65,75,80,588.07,3.2,30
+SYY,Sysco Corporation,74.3,A (Buy),80,65,68,75,75,90,87.62,2.6,31
+MTB,M&T Bank Corporation,74.3,A (Buy),85,65,68,70,70,90,236.21,-1.7,32
+EOG,"EOG Resources, Inc.",74.1,A (Buy),80,70,83,60,80,65,112.7,17.7,33
+KMI,"Kinder Morgan, Inc.",74.1,A (Buy),85,65,68,70,75,83,31.01,2.9,34
+WEC,"WEC Energy Group, Inc.",74.1,A (Buy),85,65,73,75,75,65,112.92,7.3,35
+HUBB,Hubbell Incorporated,74.1,A (Buy),85,65,73,70,75,73,503.1,5.9,36
+EQR,Equity Residential,73.9,A (Buy),80,70,73,70,75,73,65.57,6.6,37
+ITW,Illinois Tool Works Inc.,73.8,A (Buy),90,70,68,65,50,90,294.25,-6.2,38
+FE,FirstEnergy Corp.,73.8,A (Buy),70,65,90,75,75,65,47.66,5.4,39
+AME,"AMETEK, Inc.",73.8,A (Buy),80,70,68,65,75,90,233.11,6.5,40
+MAA,"Mid-America Apartment Communities, Inc.",73.8,A (Buy),85,65,90,55,75,58,136.45,7.2,41
+TXT,Textron Inc.,73.7,A (Buy),75,65,83,75,75,66,95.87,2.0,42
+NEE,"NextEra Energy, Inc.",73.6,A (Buy),85,70,68,65,75,75,90.83,2.0,43
+MHK,"Mohawk Industries, Inc.",73.6,A (Buy),85,65,68,65,70,90,136.9,-1.3,44
+TFC,Truist Financial Corporation,73.6,A (Buy),80,65,68,70,75,90,55.1,2.4,45
+PPG,"PPG Industries, Inc.",73.6,A (Buy),85,65,68,75,70,75,129.14,-4.2,46
+NOC,Northrop Grumman Corporation,73.5,A (Buy),75,70,70,75,75,80,685.0,5.8,47
+REG,Regency Centers Corporation,73.4,A (Buy),85,65,68,65,75,83,77.07,3.9,48
+MDLZ,"Mondelez International, Inc.",73.4,A (Buy),85,70,68,55,80,83,60.65,10.0,49
+PFE,Pfizer Inc.,73.4,A (Buy),90,65,73,50,75,83,27.61,3.7,50
+CFG,"Citizens Financial Group, Inc.",73.3,A (Buy),75,65,73,70,75,90,67.55,7.6,51
+UNP,Union Pacific Corporation,73.3,A (Buy),85,65,68,60,75,90,261.32,1.2,52
+EIX,Edison International,73.1,A (Buy),75,70,68,80,75,73,65.46,2.6,53
+RMD,ResMed Inc.,72.9,A (Buy),80,60,83,70,80,58,263.54,12.9,54
+USB,U.S. Bancorp,72.8,A (Buy),70,70,68,75,75,90,60.55,4.7,55
+IR,Ingersoll Rand Inc.,72.8,A (Buy),90,65,73,45,70,90,97.8,-7.8,56
+RF,Regions Financial Corporation,72.8,A (Buy),85,65,68,80,50,80,30.82,-0.5,57
+CI,The Cigna Group,72.7,A (Buy),70,70,73,80,80,66,287.81,15.1,58
+SPG,"Simon Property Group, Inc.",72.6,A (Buy),70,70,68,85,75,73,196.3,2.5,59
+GNRC,Generac Holdings Inc.,72.6,A (Buy),80,65,83,45,80,83,182.3,11.3,60
+CARR,Carrier Global Corporation,72.6,A (Buy),90,70,68,45,75,83,65.82,9.2,61
+CSCO,"Cisco Systems, Inc.",72.6,A (Buy),75,70,68,65,75,90,86.29,1.0,62
+PEP,"PepsiCo, Inc.",72.6,A (Buy),90,65,68,65,55,83,166.97,1.3,63
+EMN,Eastman Chemical Company,72.6,A (Buy),90,65,68,50,70,90,80.59,-5.4,64
+AES,The AES Corporation,72.4,A (Buy),80,65,68,70,70,83,16.25,-4.4,65
+ALLE,Allegion plc,72.4,A (Buy),80,65,68,80,55,83,178.94,1.3,66
+KO,The Coca-Cola Company,72.4,A (Buy),85,65,68,65,75,73,76.81,5.5,67
+CME,CME Group Inc.,72.4,A (Buy),90,70,68,60,50,83,306.76,-3.3,68
+AOS,A. O. Smith Corporation,72.3,A (Buy),85,65,68,70,50,90,80.47,-1.4,69
+COP,ConocoPhillips,72.3,A (Buy),80,70,68,55,75,90,107.5,6.8,70
+GLW,Corning Incorporated,72.3,A (Buy),85,70,68,60,55,90,128.1,-10.6,71
+GEV,GE Vernova Inc.,72.3,A (Buy),80,70,68,55,75,90,790.79,4.5,72
+PSA,Public Storage,72.3,A (Buy),75,70,83,60,75,65,292.33,4.4,73
+CSX,CSX Corporation,72.3,A (Buy),85,70,68,50,70,90,40.9,-2.6,74
+STX,Seagate Technology Holdings plc,72.2,A (Buy),80,65,70,55,80,90,396.23,18.0,75
+JCI,Johnson Controls International plc,72.2,A (Buy),85,70,68,50,75,83,138.75,2.4,76
+CLX,The Clorox Company,72.1,A (Buy),90,65,68,60,50,90,121.45,-0.8,77
+XOM,Exxon Mobil Corporation,72.1,A (Buy),85,65,68,55,70,90,151.59,-7.0,78
+CPT,Camden Property Trust,72.1,A (Buy),75,65,90,55,75,66,110.41,4.5,79
+TDY,Teledyne Technologies Incorporated,72.1,A (Buy),75,70,73,55,75,90,659.92,2.1,80
+DUK,Duke Energy Corporation,72.1,A (Buy),80,65,73,70,75,65,123.64,8.7,81
+MSI,"Motorola Solutions, Inc.",71.9,A (Buy),85,70,68,65,60,73,419.69,16.3,82
+FANG,"Diamondback Energy, Inc.",71.9,A (Buy),75,60,73,85,55,83,164.89,9.9,83
+DRI,"Darden Restaurants, Inc.",71.9,A (Buy),65,65,83,75,75,73,210.24,5.8,84
+HST,"Host Hotels & Resorts, Inc.",71.9,A (Buy),80,65,68,70,75,73,19.93,1.2,85
+MU,"Micron Technology, Inc.",71.8,A (Buy),80,70,55,75,75,80,373.25,2.4,86
+TXN,Texas Instruments Incorporated,71.8,A (Buy),85,70,68,60,50,90,220.92,-1.0,87
+HSY,The Hershey Company,71.8,A (Buy),95,65,68,50,50,90,229.0,-1.0,88
+CDW,CDW Corporation,71.8,A (Buy),90,65,53,75,80,65,142.85,19.3,89
+CAT,Caterpillar Inc.,71.8,A (Buy),75,65,68,70,70,90,742.37,-6.7,90
+BMY,Bristol-Myers Squibb Company,71.8,A (Buy),80,70,68,75,50,80,60.86,-1.6,91
+NUE,Nucor Corporation,71.8,A (Buy),80,65,73,55,70,90,191.99,-3.1,92
+AEE,Ameren Corporation,71.8,A (Buy),65,65,83,80,75,65,105.78,5.6,93
+AMCR,Amcor plc,71.7,A (Buy),80,60,68,65,80,83,48.53,13.8,94
+CBOE,"Cboe Global Markets, Inc.",71.6,A (Buy),80,70,83,65,55,58,274.07,2.3,95
+UPS,"United Parcel Service, Inc.",71.6,A (Buy),80,65,68,60,70,90,118.7,-4.7,96
+LH,Labcorp Holdings Inc.,71.6,A (Buy),80,65,73,60,75,75,284.5,5.5,97
+GWW,"W.W. Grainger, Inc.",71.6,A (Buy),95,60,68,65,50,75,1188.03,-4.8,98
+DOV,Dover Corporation,71.6,A (Buy),80,65,68,60,70,90,229.48,-1.5,99
+KEYS,"Keysight Technologies, Inc.",71.6,A (Buy),75,70,73,55,70,90,235.0,-6.1,100
+HON,Honeywell International Inc.,71.6,A (Buy),80,70,68,50,75,90,243.34,0.1,101
+MKC,"McCormick & Company, Incorporated",71.4,A (Buy),80,70,68,70,75,58,68.96,5.2,102
+GPC,Genuine Parts Company,71.4,A (Buy),80,65,68,60,75,83,146.68,0.7,103
+CHD,"Church & Dwight Co., Inc.",71.4,A (Buy),80,65,68,60,75,83,98.97,2.5,104
+ACGL,Arch Capital Group Ltd.,71.4,A (Buy),65,70,73,75,80,73,97.85,10.4,105
+HIG,"The Hartford Insurance Group, Inc.",71.4,A (Buy),80,70,53,80,75,73,141.63,5.6,106
+XEL,Xcel Energy Inc.,71.3,A (Buy),75,65,83,70,60,65,77.5,13.2,107
+STLD,"Steel Dynamics, Inc.",71.3,A (Buy),80,65,73,65,50,90,201.12,-4.0,108
+VTRS,Viatris Inc.,71.3,A (Buy),90,70,68,45,55,90,15.95,-12.9,109
+WMB,"The Williams Companies, Inc.",71.2,A (Buy),75,70,68,60,75,83,68.84,1.3,110
+ECL,Ecolab Inc.,71.2,A (Buy),75,70,68,60,75,83,299.62,1.9,111
+WDC,Western Digital Corporation,71.2,A (Buy),75,55,70,70,80,90,262.56,19.4,112
+DVA,DaVita Inc.,71.2,A (Buy),95,40,68,80,55,83,139.28,8.9,113
+MPWR,"Monolithic Power Systems, Inc.",71.1,A (Buy),70,65,83,60,60,90,1142.02,16.3,114
+PTC,PTC Inc.,71.1,A (Buy),75,65,68,85,80,50,162.72,19.8,115
+SWK,"Stanley Black & Decker, Inc.",71.1,A (Buy),90,65,68,40,70,90,91.76,-1.8,116
+PM,Philip Morris International Inc.,71.1,A (Buy),75,70,68,55,75,90,182.69,2.8,117
+PKG,Packaging Corporation of America,71.1,A (Buy),75,65,68,65,70,90,241.78,-4.1,118
+PEG,Public Service Enterprise Group Incorporated,71.1,A (Buy),70,65,73,80,75,65,83.2,6.5,119
+NEM,Newmont Corporation,71.0,A (Buy),60,70,70,80,80,80,121.53,10.2,120
+PLD,"Prologis, Inc.",70.9,A (Buy),85,70,73,45,70,73,140.48,-0.8,121
+ALGN,"Align Technology, Inc.",70.8,A (Buy),75,65,68,60,75,90,196.27,1.2,122
+CPAY,"Corpay, Inc.",70.8,A (Buy),60,65,73,85,75,80,356.38,8.0,123
+LIN,Linde plc,70.8,A (Buy),85,70,60,60,80,66,460.51,10.8,124
+EMR,Emerson Electric Co.,70.8,A (Buy),70,70,73,55,75,90,161.69,2.5,125
+NDSN,Nordson Corporation,70.8,A (Buy),85,65,68,60,50,90,295.8,-7.2,126
+AMT,American Tower Corporation,70.8,A (Buy),75,70,70,65,85,58,178.51,21.8,127
+AVY,Avery Dennison Corporation,70.7,A (Buy),65,70,73,75,80,66,190.67,11.1,128
+PFG,"Principal Financial Group, Inc.",70.7,A (Buy),80,65,83,60,55,66,93.64,0.2,129
+KIM,Kimco Realty Corporation,70.7,A (Buy),80,65,73,55,75,73,22.19,7.0,130
+GIS,"General Mills, Inc.",70.6,A (Buy),85,65,68,65,55,75,48.66,7.7,131
+ETN,Eaton Corporation plc,70.6,A (Buy),70,70,68,70,75,75,377.47,7.0,132
+LMT,Lockheed Martin Corporation,70.5,A (Buy),85,65,60,65,55,90,629.56,4.5,133
+MO,"Altria Group, Inc.",70.4,A (Buy),80,65,73,50,70,83,64.4,-1.8,134
+FRT,Federal Realty Investment Trust,70.4,A (Buy),80,65,68,60,75,73,107.65,4.5,135
+ED,"Consolidated Edison, Inc.",70.4,A (Buy),80,60,73,70,50,83,108.43,-3.0,136
+SLB,SLB N.V.,70.2,A (Buy),65,65,70,70,75,90,50.32,7.5,137
+C,Citigroup Inc.,70.2,A (Buy),70,70,68,65,80,73,122.15,10.2,138
+KVUE,Kenvue Inc.,70.2,A (Buy),90,65,68,55,55,73,18.32,3.3,139
+HSIC,"Henry Schein, Inc.",70.2,A (Buy),80,65,83,55,50,73,81.02,-3.6,140
+HAS,"Hasbro, Inc.",70.1,A (Buy),85,65,68,55,50,90,104.0,-0.9,141
+NXPI,NXP Semiconductors N.V.,70.0,A (Buy),75,65,70,65,80,65,236.62,10.4,142
+AZO,"AutoZone, Inc.",70.0,A (Buy),80,70,70,55,80,58,3664.84,14.5,143
+BBWI,"Bath & Body Works, Inc.",69.9,B (Accumulate),75,65,83,55,75,58,22.48,9.5,144
+SHW,The Sherwin-Williams Company,69.9,B (Accumulate),65,70,83,65,75,58,364.65,6.2,145
+FAST,Fastenal Company,69.9,B (Accumulate),80,65,73,60,50,83,46.66,-4.2,146
+O,Realty Income Corporation,69.9,B (Accumulate),80,65,73,50,75,73,63.9,0.6,147
+CHRW,"C.H. Robinson Worldwide, Inc.",69.8,B (Accumulate),85,65,68,40,70,90,196.61,-1.7,148
+SNA,Snap-on Incorporated,69.8,B (Accumulate),80,65,70,70,50,73,377.41,-1.6,149
+PNW,Pinnacle West Capital Corporation,69.7,B (Accumulate),70,65,83,65,55,73,95.2,0.8,150
+MCD,McDonald's Corporation,69.7,B (Accumulate),80,65,68,55,75,73,325.97,3.0,151
+NSC,Norfolk Southern Corporation,69.7,B (Accumulate),90,60,68,55,50,83,315.45,-2.3,152
+KDP,Keurig Dr Pepper Inc.,69.7,B (Accumulate),80,65,58,70,80,66,28.71,19.9,153
+LW,"Lamb Weston Holdings, Inc.",69.6,B (Accumulate),85,65,53,75,75,60,50.58,8.0,154
+COR,"Cencora, Inc.",69.6,B (Accumulate),65,70,83,55,80,65,360.0,11.5,155
+MDT,Medtronic plc,69.6,B (Accumulate),65,70,83,55,80,65,101.42,10.3,156
+CE,Celanese Corporation,69.6,B (Accumulate),90,65,68,30,70,90,58.32,-6.2,157
+D,"Dominion Energy, Inc.",69.6,B (Accumulate),80,65,73,70,50,65,63.79,-0.5,158
+DECK,Deckers Outdoor Corporation,69.6,B (Accumulate),55,65,73,75,80,90,115.51,11.3,159
+TT,Trane Technologies plc,69.4,B (Accumulate),65,70,68,65,75,83,461.38,4.0,160
+HII,"Huntington Ingalls Industries, Inc.",69.3,B (Accumulate),85,65,55,65,70,73,399.37,-2.1,161
+KR,The Kroger Co.,69.3,B (Accumulate),80,65,73,45,75,75,68.02,8.1,162
+BWA,BorgWarner Inc.,69.3,B (Accumulate),80,65,68,45,70,90,53.98,-6.4,163
+JBL,Jabil Inc.,69.3,B (Accumulate),65,65,83,60,55,90,258.93,2.2,164
+RSG,"Republic Services, Inc.",69.2,B (Accumulate),75,70,73,60,55,73,223.07,9.5,165
+YUM,"Yum! Brands, Inc.",69.2,B (Accumulate),80,65,73,55,75,58,158.85,7.1,166
+MPC,Marathon Petroleum Corporation,69.1,B (Accumulate),80,60,68,60,70,75,204.15,-2.3,167
+FTV,Fortive Corporation,69.1,B (Accumulate),90,65,68,40,50,90,61.92,-0.2,168
+LOW,"Lowe's Companies, Inc.",69.0,B (Accumulate),65,70,70,65,70,80,284.67,-1.2,169
+BK,The Bank of New York Mellon Corporation,68.9,B (Accumulate),60,70,73,70,75,73,126.45,4.9,170
+STT,State Street Corporation,68.9,B (Accumulate),55,70,83,75,75,58,132.23,8.6,171
+OTIS,Otis Worldwide Corporation,68.9,B (Accumulate),65,70,83,55,80,58,90.06,13.8,172
+MAR,"Marriott International, Inc.",68.8,B (Accumulate),70,60,68,65,70,90,359.35,-3.9,173
+RCL,Royal Caribbean Cruises Ltd.,68.8,B (Accumulate),55,65,68,80,75,90,347.3,4.5,174
+TGT,Target Corporation,68.8,B (Accumulate),80,65,73,65,35,80,113.23,-10.1,175
+CAH,"Cardinal Health, Inc.",68.7,B (Accumulate),55,70,83,60,80,73,220.27,12.5,176
+PWR,"Quanta Services, Inc.",68.7,B (Accumulate),70,65,73,55,70,83,510.64,-6.2,177
+EQT,EQT Corporation,68.6,B (Accumulate),65,65,68,75,80,65,55.39,15.3,178
+CNP,"CenterPoint Energy, Inc.",68.6,B (Accumulate),75,65,73,55,75,65,40.97,3.7,179
+CVX,Chevron Corporation,68.6,B (Accumulate),80,65,68,40,70,90,182.26,-0.3,180
+IFF,International Flavors & Fragrances Inc.,68.6,B (Accumulate),80,65,73,30,75,90,76.76,7.2,181
+IP,International Paper Company,68.6,B (Accumulate),75,55,73,55,70,90,48.0,-2.4,182
+MTCH,"Match Group, Inc.",68.4,B (Accumulate),70,65,68,70,80,58,32.49,12.3,183
+UDR,"UDR, Inc.",68.4,B (Accumulate),80,65,73,40,75,73,39.38,3.4,184
+GE,GE Aerospace,68.3,B (Accumulate),65,70,83,70,60,50,316.33,13.0,185
+TPR,"Tapestry, Inc.",68.3,B (Accumulate),65,65,68,60,75,90,153.18,2.2,186
+HLT,Hilton Worldwide Holdings Inc.,68.3,B (Accumulate),80,65,68,45,70,80,323.7,-7.1,187
+SO,The Southern Company,68.3,B (Accumulate),65,65,83,70,55,65,90.72,5.6,188
+PSX,Phillips 66,68.2,B (Accumulate),60,65,68,75,70,83,157.31,-1.0,189
+APA,APA Corporation,68.2,B (Accumulate),70,55,83,65,50,83,27.45,-3.3,190
+MLM,"Martin Marietta Materials, Inc.",68.2,B (Accumulate),70,65,68,65,70,73,708.11,-3.0,191
+BG,Bunge Global SA,68.2,B (Accumulate),80,60,60,65,55,90,118.37,6.4,192
+WAB,Westinghouse Air Brake Technologies Corporation,68.1,B (Accumulate),60,70,73,60,75,80,246.45,1.4,193
+NI,NiSource Inc.,68.1,B (Accumulate),60,70,73,70,75,65,44.73,4.7,194
+BAX,Baxter International Inc.,68.1,B (Accumulate),85,65,68,45,55,80,21.94,4.4,195
+DGX,Quest Diagnostics Incorporated,67.9,B (Accumulate),60,65,68,70,75,83,205.35,2.6,196
+BAC,Bank of America Corporation,67.9,B (Accumulate),70,65,58,80,80,58,55.39,12.3,197
+AEP,"American Electric Power Company, Inc.",67.8,B (Accumulate),60,65,73,75,75,65,121.23,6.2,198
+AMP,"Ameriprise Financial, Inc.",67.8,B (Accumulate),65,65,68,80,80,50,505.64,12.7,199
+CMS,CMS Energy Corporation,67.8,B (Accumulate),60,65,73,75,75,65,73.75,5.9,200
+MKTX,MarketAxess Holdings Inc.,67.8,B (Accumulate),70,65,75,60,75,58,177.31,8.8,201
+ENPH,"Enphase Energy, Inc.",67.8,B (Accumulate),90,55,68,45,50,90,50.25,-9.5,202
+EQIX,"Equinix, Inc.",67.6,B (Accumulate),75,70,68,45,80,65,856.74,11.9,203
+TRGP,Targa Resources Corp.,67.6,B (Accumulate),65,70,68,65,50,90,217.06,-1.8,204
+ROL,"Rollins, Inc.",67.6,B (Accumulate),80,50,73,60,75,65,64.97,0.5,205
+EXC,Exelon Corporation,67.5,B (Accumulate),75,65,70,70,55,58,44.64,9.2,206
+ABBV,AbbVie Inc.,67.4,B (Accumulate),75,65,68,55,80,58,222.44,10.3,207
+MCK,McKesson Corporation,67.4,B (Accumulate),60,70,68,60,75,83,935.21,4.2,208
+VMC,Vulcan Materials Company,67.3,B (Accumulate),70,65,68,65,70,65,330.37,-0.5,209
+JBHT,"J.B. Hunt Transport Services, Inc.",67.3,B (Accumulate),80,60,73,45,50,90,229.05,-8.2,210
+LDOS,"Leidos Holdings, Inc.",67.3,B (Accumulate),50,70,83,75,80,50,194.72,12.6,211
+J,Jacobs Solutions Inc.,67.1,B (Accumulate),70,65,68,60,75,65,151.16,4.2,212
+QRVO,"Qorvo, Inc.",67.1,B (Accumulate),75,65,68,65,55,65,84.31,4.7,213
+BEN,"Franklin Resources, Inc.",67.1,B (Accumulate),85,50,68,55,50,90,28.16,-2.8,214
+ATO,Atmos Energy Corporation,66.9,B (Accumulate),70,65,73,70,55,58,174.17,1.5,215
+HAL,Halliburton Company,66.8,B (Accumulate),55,65,70,70,75,80,34.02,5.9,216
+EG,"Everest Group, Ltd.",66.8,B (Accumulate),70,70,75,60,55,58,330.48,9.7,217
+NTRS,Northern Trust Corporation,66.8,B (Accumulate),65,70,70,70,55,66,148.94,3.8,218
+ODFL,"Old Dominion Freight Line, Inc.",66.8,B (Accumulate),75,65,73,40,55,90,194.49,0.3,219
+ULTA,"Ulta Beauty, Inc.",66.8,B (Accumulate),60,65,70,70,70,73,679.28,-0.3,220
+BXP,"BXP, Inc.",66.6,B (Accumulate),75,65,68,55,80,50,66.1,15.7,221
+ADI,"Analog Devices, Inc.",66.6,B (Accumulate),55,70,73,55,70,90,325.16,-2.9,222
+DAY,"Dayforce, Inc.",66.5,B (Accumulate),90,50,80,45,55,58,69.86,0.1,223
+VICI,VICI Properties Inc.,66.3,B (Accumulate),50,65,73,75,85,65,29.25,20.1,224
+POOL,Pool Corporation,66.3,B (Accumulate),65,55,70,75,80,58,267.33,15.0,225
+NRG,"NRG Energy, Inc.",66.3,B (Accumulate),50,70,68,75,85,65,156.43,29.5,226
+HD,"The Home Depot, Inc.",66.3,B (Accumulate),65,65,70,65,75,58,389.68,1.1,227
+LHX,"L3Harris Technologies, Inc.",66.3,B (Accumulate),80,70,55,45,80,66,345.08,10.3,228
+AXP,American Express Company,66.2,B (Accumulate),65,65,68,80,55,58,363.2,3.2,229
+TSN,"Tyson Foods, Inc.",66.2,B (Accumulate),80,65,55,45,75,80,64.96,6.3,230
+EVRG,"Evergy, Inc.",66.1,B (Accumulate),60,65,83,50,75,65,78.75,6.7,231
+TRV,"The Travelers Companies, Inc.",66.1,B (Accumulate),70,70,53,80,55,65,298.61,0.8,232
+WMT,Walmart Inc.,66.1,B (Accumulate),75,55,73,55,55,80,126.7,0.3,233
+AMAT,"Applied Materials, Inc.",66.0,B (Accumulate),60,70,70,50,75,80,329.07,1.9,234
+SCHW,The Charles Schwab Corporation,66.0,B (Accumulate),65,70,55,75,85,50,99.25,21.8,235
+NVDA,NVIDIA Corporation,66.0,B (Accumulate),50,65,90,65,70,58,188.54,34.6,236
+LRCX,Lam Research Corporation,66.0,B (Accumulate),50,70,70,65,85,73,226.61,21.1,237
+LUV,Southwest Airlines Co.,65.8,B (Accumulate),80,65,68,45,35,90,54.07,-12.2,238
+TSCO,Tractor Supply Company,65.8,B (Accumulate),50,65,83,65,75,65,54.05,6.6,239
+CTVA,"Corteva, Inc.",65.8,B (Accumulate),80,70,60,30,80,73,74.22,10.5,240
+ICE,"Intercontinental Exchange, Inc.",65.8,B (Accumulate),80,70,45,60,80,58,164.81,18.7,241
+PH,Parker-Hannifin Corporation,65.7,B (Accumulate),50,70,73,65,75,73,991.57,2.6,242
+CAG,"Conagra Brands, Inc.",65.7,B (Accumulate),85,65,68,30,50,83,19.33,-2.7,243
+VTR,"Ventas, Inc.",65.7,B (Accumulate),60,65,68,55,75,83,83.9,5.7,244
+BIIB,Biogen Inc.,65.7,B (Accumulate),75,65,58,50,75,73,188.99,8.7,245
+L,Loews Corporation,65.6,B (Accumulate),80,65,53,70,50,65,109.96,0.0,246
+EXR,Extra Space Storage Inc.,65.6,B (Accumulate),65,65,70,55,75,66,141.44,5.8,247
+HRL,Hormel Foods Corporation,65.5,B (Accumulate),80,65,55,55,60,73,24.3,12.1,248
+SJM,The J. M. Smucker Company,65.3,B (Accumulate),80,65,68,45,55,65,109.38,5.0,249
+ETR,Entergy Corporation,65.3,B (Accumulate),50,65,73,75,75,65,99.71,5.6,250
+RL,Ralph Lauren Corporation,65.3,B (Accumulate),70,65,45,80,80,58,356.18,13.3,251
+CBRE,"CBRE Group, Inc.",65.3,B (Accumulate),60,70,70,55,75,66,170.33,8.8,252
+RTX,RTX Corporation,65.1,B (Accumulate),65,70,55,65,75,66,195.19,9.9,253
+PCG,PG&E Corporation,65.1,B (Accumulate),60,70,53,70,85,65,16.75,27.0,254
+ESS,"Essex Property Trust, Inc.",65.1,B (Accumulate),70,65,68,60,55,65,262.51,7.3,255
+GD,General Dynamics Corporation,65.0,B (Accumulate),65,70,55,70,75,58,358.83,9.9,256
+ON,ON Semiconductor Corporation,64.8,B (Accumulate),65,55,83,30,75,90,67.38,0.9,257
+ANET,"Arista Networks, Inc.",64.8,B (Accumulate),50,65,80,65,60,75,143.45,15.7,258
+COST,Costco Wholesale Corporation,64.8,B (Accumulate),65,65,70,55,75,58,971.23,7.9,259
+ROK,"Rockwell Automation, Inc.",64.8,B (Accumulate),70,70,55,60,75,58,412.6,3.7,260
+HCA,"HCA Healthcare, Inc.",64.7,B (Accumulate),50,65,73,65,75,73,502.05,5.6,261
+MNST,Monster Beverage Corporation,64.6,B (Accumulate),70,65,55,60,75,66,80.17,0.7,262
+INCY,Incyte Corporation,64.6,B (Accumulate),55,65,68,85,75,40,100.05,4.4,263
+FCX,Freeport-McMoRan Inc.,64.5,B (Accumulate),65,70,70,35,70,80,63.26,-0.9,264
+TDG,TransDigm Group Incorporated,64.5,B (Accumulate),70,70,60,50,85,50,1311.95,21.5,265
+BF-B,Brown-Forman Corporation,64.4,B (Accumulate),80,50,58,60,55,83,29.91,1.2,266
+APD,"Air Products and Chemicals, Inc.",64.2,B (Accumulate),60,70,68,45,75,73,290.77,3.8,267
+TJX,"The TJX Companies, Inc.",64.1,B (Accumulate),65,70,68,65,55,50,153.29,8.5,268
+NVR,"NVR, Inc.",63.9,B (Accumulate),50,65,73,60,75,73,8094.28,2.1,269
+VRTX,Vertex Pharmaceuticals Incorporated,63.9,B (Accumulate),55,70,55,70,80,66,463.48,11.0,270
+CHTR,"Charter Communications, Inc.",63.9,B (Accumulate),70,55,53,65,60,90,248.19,13.9,271
+UHS,"Universal Health Services, Inc.",63.7,B (Accumulate),50,65,58,85,80,58,212.78,17.7,272
+SMCI,"Super Micro Computer, Inc.",63.6,B (Accumulate),70,40,68,80,65,60,33.33,23.9,273
+DLR,"Digital Realty Trust, Inc.",63.6,B (Accumulate),60,65,68,50,80,65,172.53,12.7,274
+ARE,"Alexandria Real Estate Equities, Inc.",63.5,B (Accumulate),80,65,70,30,55,65,56.86,5.6,275
+GS,"The Goldman Sachs Group, Inc.",63.5,B (Accumulate),50,65,70,75,55,73,948.99,0.2,276
+FMC,FMC Corporation,63.5,B (Accumulate),75,55,70,30,80,73,16.01,13.2,277
+CMG,"Chipotle Mexican Grill, Inc.",63.5,B (Accumulate),65,70,45,65,80,65,38.44,15.7,278
+BA,The Boeing Company,63.3,B (Accumulate),65,65,45,65,80,73,242.59,12.2,279
+CVS,CVS Health Corporation,63.2,B (Accumulate),80,70,45,45,85,50,75.7,25.2,280
+PHM,"PulteGroup, Inc.",63.2,B (Accumulate),50,65,73,60,75,66,137.33,2.6,281
+HWM,Howmet Aerospace Inc.,63.2,B (Accumulate),50,65,83,60,55,66,224.47,9.9,282
+MGM,MGM Resorts International,63.2,B (Accumulate),75,50,58,50,80,73,37.36,13.5,283
+KMB,Kimberly-Clark Corporation,63.1,B (Accumulate),80,55,53,60,60,65,105.88,12.1,284
+IRM,Iron Mountain Incorporated,63.1,B (Accumulate),50,65,73,50,80,75,99.31,16.8,285
+DD,"DuPont de Nemours, Inc.",63.1,B (Accumulate),70,65,68,30,55,90,49.43,5.2,286
+CPB,The Campbell's Company,63.1,B (Accumulate),85,50,53,55,55,75,29.15,8.3,287
+AVB,"AvalonBay Communities, Inc.",63.0,B (Accumulate),65,65,55,65,80,50,177.43,12.4,288
+MMM,3M Company,62.9,B (Accumulate),65,65,53,65,75,58,173.43,2.3,289
+BLK,"BlackRock, Inc.",62.8,B (Accumulate),60,70,45,70,85,58,1087.78,22.1,290
+EFX,Equifax Inc.,62.8,B (Accumulate),75,70,45,60,80,40,202.71,19.1,291
+AIG,"American International Group, Inc.",62.7,B (Accumulate),60,70,58,55,80,58,75.0,15.8,292
+AMD,"Advanced Micro Devices, Inc.",62.5,B (Accumulate),70,65,45,55,90,58,213.57,35.1,293
+CTAS,Cintas Corporation,62.5,B (Accumulate),50,65,83,55,55,66,199.31,8.8,294
+STZ,"Constellation Brands, Inc.",62.4,B (Accumulate),50,60,83,45,55,90,165.63,3.1,295
+AFL,Aflac Incorporated,62.4,B (Accumulate),60,65,73,55,50,65,115.88,-3.6,296
+GOOGL,Alphabet Inc.,62.3,B (Accumulate),60,70,55,70,60,58,318.58,16.7,297
+VLTO,Veralto Corporation,62.2,B (Accumulate),60,70,50,75,80,40,92.81,19.2,298
+GRMN,Garmin Ltd.,62.2,B (Accumulate),50,55,90,65,60,50,208.41,12.9,299
+BBY,"Best Buy Co., Inc.",62.2,B (Accumulate),50,55,68,75,80,58,68.04,18.4,300
+HPE,Hewlett Packard Enterprise Company,62.1,B (Accumulate),60,65,53,60,80,65,23.97,10.3,301
+PCAR,PACCAR Inc,62.0,B (Accumulate),65,60,60,45,70,80,127.07,-3.9,302
+AAPL,Apple Inc.,61.9,B (Accumulate),55,65,53,70,75,65,273.68,7.1,303
+ADM,Archer-Daniels-Midland Company,61.8,B (Accumulate),65,65,70,40,35,90,68.62,-12.4,304
+ROP,"Roper Technologies, Inc.",61.8,B (Accumulate),70,70,50,65,90,15,348.84,32.5,305
+INTC,Intel Corporation,61.5,B (Accumulate),80,65,45,40,55,80,47.13,0.1,306
+STE,STERIS plc,61.5,B (Accumulate),70,70,45,60,80,40,244.67,15.0,307
+AVGO,Broadcom Inc.,61.4,B (Accumulate),55,65,68,60,70,50,340.44,34.7,308
+SWKS,"Skyworks Solutions, Inc.",61.4,B (Accumulate),75,55,58,50,60,65,62.31,14.7,309
+NTAP,"NetApp, Inc.",61.4,B (Accumulate),50,65,58,75,80,50,105.64,16.3,310
+WY,Weyerhaeuser Company,61.0,B (Accumulate),50,70,70,30,80,80,26.94,14.7,311
+KLAC,KLA Corporation,61.0,B (Accumulate),50,70,55,55,80,73,1430.84,16.4,312
+MS,Morgan Stanley,61.0,B (Accumulate),50,65,55,75,75,58,177.89,9.9,313
+BRK-B,Berkshire Hathaway Inc.,60.9,B (Accumulate),50,65,58,70,75,58,500.3,5.1,314
+LLY,Eli Lilly and Company,60.8,B (Accumulate),60,70,45,65,80,50,1025.0,17.2,315
+ORLY,"O'Reilly Automotive, Inc.",60.5,B (Accumulate),65,70,45,55,80,50,93.44,13.1,316
+PNR,Pentair plc,60.5,B (Accumulate),70,70,35,60,80,50,98.62,15.3,317
+KMX,"CarMax, Inc.",60.3,B (Accumulate),80,55,55,50,35,73,45.83,-14.2,318
+APH,Amphenol Corporation,60.2,B (Accumulate),50,70,55,65,80,50,144.14,16.7,319
+COO,"The Cooper Companies, Inc.",60.0,B (Accumulate),50,65,70,45,80,58,81.57,11.6,320
+GOOG,Alphabet Inc.,60.0,B (Accumulate),55,65,55,70,60,58,318.63,12.2,321
+LYB,LyondellBasell Industries N.V.,59.9,C (Hold),65,60,73,30,35,90,57.66,-11.4,322
+SRE,Sempra,59.9,C (Hold),50,70,53,60,80,58,89.7,10.9,323
+WYNN,"Wynn Resorts, Limited",59.9,C (Hold),55,60,68,55,65,58,116.86,23.6,324
+OXY,Occidental Petroleum Corporation,59.7,C (Hold),65,50,73,40,55,73,46.27,6.0,325
+TMUS,"T-Mobile US, Inc.",59.7,C (Hold),55,50,53,70,90,58,199.43,33.8,326
+WELL,Welltower Inc.,59.4,C (Hold),50,70,53,55,75,65,200.84,7.3,327
+TAP,Molson Coors Beverage Company,59.4,C (Hold),60,55,83,30,50,73,52.03,-2.1,328
+CPRT,"Copart, Inc.",59.3,C (Hold),50,65,55,70,65,58,40.35,21.2,329
+EPAM,"EPAM Systems, Inc.",59.2,C (Hold),70,65,35,65,80,40,191.61,18.9,330
+KHC,The Kraft Heinz Company,59.1,C (Hold),80,60,53,30,55,65,24.9,6.4,331
+MSCI,MSCI Inc.,59.0,C (Hold),60,70,45,60,90,30,515.66,31.5,332
+LVS,Las Vegas Sands Corp.,58.9,C (Hold),50,50,58,85,85,35,57.02,22.5,333
+FTNT,"Fortinet, Inc.",58.9,C (Hold),55,60,53,70,55,65,85.53,4.9,334
+DOW,Dow Inc.,58.9,C (Hold),65,60,68,30,35,90,33.6,-13.1,335
+DXCM,"DexCom, Inc.",58.8,C (Hold),50,65,45,75,65,65,68.16,25.0,336
+PPL,PPL Corporation,58.8,C (Hold),55,65,45,65,75,58,36.07,10.0,337
+RVTY,"Revvity, Inc.",58.4,C (Hold),60,65,45,45,80,66,104.75,14.1,338
+ALB,Albemarle Corporation,58.2,C (Hold),65,55,55,40,75,65,168.56,5.5,339
+IBM,International Business Machines Corporation,58.2,C (Hold),55,65,45,70,80,40,291.76,11.4,340
+AMZN,"Amazon.com, Inc.",57.8,C (Hold),55,65,60,70,70,15,206.96,36.8,341
+BDX,"Becton, Dickinson and Company",57.8,C (Hold),50,70,60,55,80,30,171.68,13.8,342
+IT,"Gartner, Inc.",57.2,C (Hold),60,65,50,75,65,15,159.89,21.2,343
+XYL,Xylem Inc.,57.2,C (Hold),60,70,45,55,85,25,128.92,25.6,344
+CCI,Crown Castle Inc.,57.0,C (Hold),60,70,45,40,80,50,84.54,17.7,345
+CDNS,"Cadence Design Systems, Inc.",57.0,C (Hold),50,70,45,60,85,40,299.0,27.0,346
+EBAY,eBay Inc.,56.5,C (Hold),55,65,45,75,55,40,87.48,8.3,347
+TECH,Bio-Techne Corporation,56.5,C (Hold),65,65,45,30,80,58,64.8,16.1,348
+RJF,"Raymond James Financial, Inc.",56.0,C (Hold),50,60,45,70,80,40,158.48,16.6,349
+DOC,"Healthpeak Properties, Inc.",55.0,C (Hold),50,65,45,45,80,58,17.0,16.9,350
+CSGP,"CoStar Group, Inc.",54.2,C (Hold),50,65,50,55,90,15,50.85,57.5,351
+WTW,Willis Towers Watson Public Limited Company,54.2,C (Hold),55,65,35,60,85,30,289.77,29.4,352
+MRNA,"Moderna, Inc.",54.2,C (Hold),55,50,60,30,50,90,41.99,-7.6,353
+PANW,"Palo Alto Networks, Inc.",53.8,C (Hold),60,65,35,55,90,15,165.51,35.7,354
+ADSK,"Autodesk, Inc.",53.5,C (Hold),60,70,35,60,70,15,243.58,49.1,355
+EL,The Estée Lauder Companies Inc.,53.5,C (Hold),50,65,45,45,75,48,101.31,6.4,356
+TSLA,"Tesla, Inc.",49.0,D (Caution),50,55,45,30,70,50,425.21,-1.6,357

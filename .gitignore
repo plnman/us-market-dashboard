@@ -19,8 +19,6 @@ instance/
 
 # Large Data Files (Generated on deployment)
 us_daily_prices.csv
-*.json
-*.csv
 
 # IDE
 .vscode/

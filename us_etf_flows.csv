@@ -1,0 +1,27 @@
+category,ticker,name,price,change_1d,flow_score,vol_ratio,momentum_20d
+Sector,XLE,Energy,53.98,-1.82,80.5,0.88,13.38
+Sector,XLP,Consumer Staples,89.21,0.92,80.3,1.12,8.3
+Sector,XLB,Materials,52.83,-1.47,78.9,0.99,7.9
+Data,USO,Oil,76.38,-3.18,77.8,0.91,7.38
+Sector,XLU,Utilities,45.25,1.48,77.7,1.08,3.76
+Sector,XLRE,Real Estate,42.87,0.16,77.4,1.1,2.81
+Sector,XLI,Industrials,172.75,-1.2,76.5,0.94,4.2
+Data,EEM,Emerging Markets,60.86,-1.14,75.7,0.83,4.77
+Data,LQD,Corp Bonds,111.22,0.47,74.9,0.95,0.67
+Data,TLT,20Y Treasury,89.23,1.33,73.3,0.88,1.43
+Data,GLD,Gold,451.39,-3.47,72.7,0.44,6.63
+Data,GDX,Gold Miners,98.28,-7.26,72.6,0.7,1.2
+Data,SMH,Semiconductors,406.11,-2.09,32.2,0.94,2.45
+Data,KRE,Regional Banks,70.7,-1.55,27.0,1.02,3.6
+Sector,XLY,Consumer Disc,116.13,-1.38,25.6,1.32,-5.35
+Sector,XLK,Technology,139.21,-2.63,24.5,1.16,-4.3
+Sector,XLV,Healthcare,156.0,-0.16,24.5,0.98,-0.61
+Data,HYG,High Yield Bonds,80.79,-0.05,24.2,0.91,0.18
+Sector,XLF,Financials,51.69,-1.99,24.0,1.14,-4.93
+Broad Market,SPY,S&P 500,681.27,-1.54,23.8,0.95,-1.58
+Broad Market,QQQ,Nasdaq 100,600.64,-2.03,23.7,1.04,-3.4
+Sector,XLC,Comm Services,114.64,-1.8,23.6,0.93,-1.35
+Broad Market,IWM,Russell 2000,259.54,-2.04,22.8,0.89,-2.25
+Data,XBI,Biotech,123.18,-1.18,22.5,0.8,-0.94
+Broad Market,VTI,Total Stock Market,336.01,-1.6,21.4,0.73,-1.77
+Data,ARKK,Innovation,68.45,-3.41,19.8,1.3,-16.45

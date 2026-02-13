@@ -168,6 +168,16 @@ def index():
 def get_us_portfolio_data():
     """US Market Portfolio Data - Market Indices"""
     try:
+        # 1. Try to load from cached JSON file (bypass Yahoo API on Render)
+        json_path = 'market_indices.json'
+        if os.path.exists(json_path):
+            try:
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    return jsonify(json.load(f))
+            except Exception as e:
+                print(f"Error reading market_indices.json: {e}")
+        
+        # 2. Fallback to live fetching (if file missing)
         market_indices = []
         
         # US Market Indices
@@ -777,29 +787,39 @@ def get_us_stock_chart(ticker):
             cutoff_date = datetime.now() - timedelta(days=days)
             df_ticker = df_ticker[df_ticker['date'] >= cutoff_date]
             
-        # Format for ApexCharts
-        # series = [{x: timestamp, y: [open, high, low, close]}]
-        data = []
+        # Format for Lightweight Charts (TradingView)
+        # candles = [{time: timestamp(seconds), open, high, low, close}]
+        candles = []
         for _, row in df_ticker.iterrows():
-            data.append({
-                'x': int(row['date'].timestamp() * 1000), # JS needs milliseconds
-                'y': [
-                    float(row['open']),
-                    float(row['high']),
-                    float(row['low']),
-                    float(row['current_price']) # or 'close'
-                ]
-            })
+            try:
+                # Handle potential key case sensitivity from different CSV sources
+                # Try lowercase first (light CSV), then Title case (yfinance)
+                op = float(row.get('open', row.get('Open', 0)))
+                hi = float(row.get('high', row.get('High', 0)))
+                lo = float(row.get('low', row.get('Low', 0)))
+                cl = float(row.get('current_price', row.get('Close', 0))) # light CSV uses current_price
+                
+                # Timestamp needs to be in seconds for Lightweight Charts
+                ts = int(row['date'].timestamp())
+                
+                candles.append({
+                    'time': ts,
+                    'open': op,
+                    'high': hi,
+                    'low': lo,
+                    'close': cl
+                })
+            except Exception as e:
+                print(f"Error parsing row for {ticker}: {e}")
+                continue
             
         # Sort by date
-        data.sort(key=lambda x: x['x'])
+        candles.sort(key=lambda x: x['time'])
         
         return jsonify({
             'ticker': ticker,
-            'series': [{
-                'name': ticker,
-                'data': data
-            }]
+            'period': period,
+            'candles': candles
         })
 
     except Exception as e:
