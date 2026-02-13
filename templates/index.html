@@ -2130,6 +2130,175 @@
     </div>
 
 
+    <!-- DEBUG & HOTFIX SCRIPT -->
+    <script>
+        // DEBUG: On-screen logging helper
+        window.logDebug = function (msg) {
+            console.log(msg);
+            const debugEl = document.getElementById('debug-console');
+            if (debugEl) {
+                const time = new Date().toLocaleTimeString();
+                debugEl.innerHTML += `<div>[${time}] ${msg}</div>`;
+                debugEl.scrollTop = debugEl.scrollHeight;
+            }
+        };
+
+        // Initialize Debug Console
+        (function () {
+            if (!document.getElementById('debug-console')) {
+                const consoleDiv = document.createElement('div');
+                consoleDiv.id = 'debug-console';
+                consoleDiv.style.cssText = 'position:fixed; top:60px; left:10px; width:300px; height:200px; background:rgba(0,0,0,0.85); color:#00ff00; font-family:monospace; font-size:11px; overflow-y:auto; z-index:99999; border:1px solid #444; padding:5px; pointer-events:none;';
+                document.body.appendChild(consoleDiv);
+                logDebug("Debug Console Started (Hotfix v2)");
+            }
+        })();
+
+        // Redefine loadUSStockChart with debug logging (Overwrites previous definition)
+        window.loadUSStockChart = async function (pick, idx, period = null) {
+            const chartContainer = document.getElementById('us-stock-chart');
+            const tickerEl = document.getElementById('us-chart-ticker');
+            const infoEl = document.getElementById('us-chart-info');
+            const gradeEl = document.getElementById('us-chart-grade');
+
+            if (!chartContainer) return;
+
+            // Save current pick
+            currentChartPick = pick;
+            const usePeriod = period || currentChartPeriod;
+
+            // Update header
+            if (tickerEl) tickerEl.textContent = pick.ticker;
+            const score = pick.final_score || pick.composite_score || 0;
+            if (infoEl) infoEl.textContent = `${pick.name || pick.ticker} | Score: ${score}/100`;
+
+            const aiRec = pick.ai_recommendation || '분석 중';
+            let displayRec = aiRec;
+            let bgClass = 'bg-gray-600';
+
+            if (aiRec.toLowerCase().includes('strong buy') || aiRec.includes('적극')) {
+                displayRec = '적극 매수';
+                bgClass = 'bg-yellow-600';
+            } else if (aiRec.toLowerCase().includes('buy') || aiRec.includes('매수')) {
+                displayRec = '매수';
+                bgClass = 'bg-green-600';
+            }
+
+            if (gradeEl) {
+                gradeEl.textContent = displayRec;
+                gradeEl.className = `px-3 py-1 rounded text-sm font-bold ${bgClass} text-white`;
+            }
+
+            // Update details panel
+            if (typeof updateUSStockDetails === 'function') updateUSStockDetails(pick);
+
+            // Highlight selected row
+            if (idx >= 0) {
+                document.querySelectorAll('#us-smart-money-table tr').forEach(tr => {
+                    tr.classList.remove('bg-[#2a2a2a]');
+                });
+                const rows = document.querySelectorAll('#us-smart-money-table tr');
+                if (rows[idx]) rows[idx].classList.add('bg-[#2a2a2a]');
+            }
+
+            // --- Chart Loading Logic ---
+            try {
+                logDebug(`Loading chart for ${pick.ticker} (${usePeriod})...`);
+
+                // Force container height
+                chartContainer.style.height = '300px';
+                chartContainer.style.position = 'relative';
+
+                chartContainer.innerHTML = '<div class="flex items-center justify-center h-full text-gray-500"><i class="fas fa-spinner fa-spin text-2xl"></i> <span class="ml-2">Loading Chart...</span></div>';
+
+                // Wait a bit to ensure library load
+                if (typeof LightweightCharts === 'undefined') {
+                    logDebug("Waiting for LightweightCharts...");
+                    await new Promise(r => setTimeout(r, 1000)); // wait 1s
+                }
+
+                // Ensure Library is loaded
+                if (typeof LightweightCharts === 'undefined') {
+                    logDebug("ERROR: LightweightCharts lib not found!");
+                    chartContainer.innerHTML = '<div class="flex items-center justify-center h-full text-red-500 flex-col"><i class="fas fa-exclamation-triangle mb-2"></i><span>Chart Library Not Loaded</span><span class="text-xs text-gray-400 mt-1">Check internet connection or CDN</span></div>';
+                    return;
+                }
+
+                logDebug(`Fetching chart data...`);
+                const response = await fetch(`/api/us/stock-chart/${pick.ticker}?period=${usePeriod}`);
+                if (!response.ok) {
+                    logDebug(`API Error: ${response.status}`);
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                logDebug(`Data received. Candles: ${data.candles ? data.candles.length : 0}`);
+
+                if (data.error) {
+                    logDebug(`Data has error: ${data.error}`);
+                    chartContainer.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500">${data.error}</div>`;
+                    return;
+                }
+
+                if (!data.candles || data.candles.length === 0) {
+                    logDebug("No candles data found");
+                    chartContainer.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500">No price data for ${pick.ticker}</div>`;
+                    return;
+                }
+
+                // Clear container and create chart
+                chartContainer.innerHTML = '';
+
+                // Dispose previous chart if exists
+                if (window.usStockChart) {
+                    try {
+                        window.usStockChart.remove();
+                    } catch (e) { console.warn("Chart remove error", e); }
+                    window.usStockChart = null;
+                }
+
+                // Double check container dimensions
+                const containerWidth = chartContainer.clientWidth || chartContainer.parentElement.clientWidth || 600;
+                const containerHeight = chartContainer.clientHeight || 300;
+                logDebug(`Creating chart: ${containerWidth}x${containerHeight}`);
+
+                window.usStockChart = LightweightCharts.createChart(chartContainer, {
+                    width: containerWidth,
+                    height: containerHeight,
+                    layout: { background: { color: '#1a1a1a' }, textColor: '#999' },
+                    grid: { vertLines: { color: '#2a2a2a' }, horzLines: { color: '#2a2a2a' } },
+                    timeScale: {
+                        borderColor: '#2a2a2a',
+                        timeVisible: true,
+                        rightOffset: 5,
+                        fixLeftEdge: true,
+                        fixRightEdge: true
+                    },
+                    rightPriceScale: { borderColor: '#2a2a2a' },
+                    handleScroll: false,
+                    handleScale: false
+                });
+
+                const candleSeries = window.usStockChart.addCandlestickSeries({
+                    upColor: '#22c55e',
+                    downColor: '#ef4444',
+                    borderUpColor: '#22c55e',
+                    borderDownColor: '#ef4444',
+                    wickUpColor: '#22c55e',
+                    wickDownColor: '#ef4444'
+                });
+
+                candleSeries.setData(data.candles);
+                window.usStockChart.timeScale().fitContent();
+                logDebug("Chart rendered successfully");
+
+            } catch (e) {
+                console.error('Error loading chart:', e);
+                logDebug(`Chart Error: ${e.message}`);
+                chartContainer.innerHTML = `<div class="flex items-center justify-center h-full text-red-500">Error: ${e.message}</div>`;
+            }
+        };
+    </script>
 </body>
 
 </html>
