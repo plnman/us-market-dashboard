@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 def create_market_indices():
-    print("⏳ Fetching market indices...")
+    print("Fetching market indices...")
     
     indices_map = {
         '^DJI': 'Dow Jones',
@@ -52,10 +52,10 @@ def create_market_indices():
                     'color': 'gray'
                 })
             else:
-                 print(f"    ⚠️ No data for {ticker}")
+                 print(f"    No data for {ticker}")
                  
         except Exception as e:
-            print(f"    ❌ Error fetching {ticker}: {e}")
+            print(f"    Error fetching {ticker}: {e}")
 
     data = {
         'market_indices': market_indices,
@@ -67,7 +67,7 @@ def create_market_indices():
     with open('market_indices.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
         
-    print(f"✅ Saved {len(market_indices)} indices to market_indices.json")
+    print(f"Saved {len(market_indices)} indices to market_indices.json")
 
 if __name__ == "__main__":
     create_market_indices()
