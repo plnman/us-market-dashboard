@@ -119,7 +119,12 @@ def get_sector(ticker: str) -> str:
     if ticker in _sector_cache:
         return _sector_cache[ticker]
     
-    # Fetch from yfinance and save to file
+    # Fetch from yfinance and save to file - DISABLED for Render compatibility
+    # yfinance calls hang or fail on Render due to IP blocking
+    # Return '-' if not in cache
+    return '-'
+    
+    """
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
@@ -144,6 +149,7 @@ def get_sector(ticker: str) -> str:
             'Utilities': 'Util',
             'Real Estate': 'REIT',
             'Communication Services': 'Comm',
+            'Sector': 'Unknown'
         }
         
         short_sector = sector_short_map.get(sector, sector[:5] if sector else '-')
@@ -158,6 +164,8 @@ def get_sector(ticker: str) -> str:
         print(f"Error fetching sector for {ticker}: {e}")
         _sector_cache[ticker] = '-'
         _save_sector_cache(_sector_cache)
+        return '-'
+    """
         return '-'
 
 @app.route('/')
@@ -250,9 +258,11 @@ def get_us_smart_money():
             with open(current_file, 'r', encoding='utf-8') as f:
                 snapshot = json.load(f)
             
-            # Get current prices for performance calculation
-            tickers = [p['ticker'] for p in snapshot['picks']]
+            # Get current prices - DISABLED for Render compatibility
+            # Fetching prices individually causes timeouts on Render
             current_prices = {}
+            """
+            tickers = [p['ticker'] for p in snapshot['picks']]
             
             # Fetch prices individually for better reliability
             for ticker in tickers:
@@ -263,6 +273,7 @@ def get_us_smart_money():
                         current_prices[ticker] = round(float(hist['Close'].dropna().iloc[-1]), 2)
                 except Exception as e:
                     print(f"Error fetching price for {ticker}: {e}")
+            """
             
             # Add performance data to picks
             picks_with_perf = []
