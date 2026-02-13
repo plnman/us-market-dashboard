@@ -335,14 +335,17 @@ def get_us_smart_money():
             csv_path = 'smart_money_picks.csv'
         
         if not os.path.exists(csv_path):
-            return jsonify({'error': 'Smart money picks not found. Run screener first.'}), 404
+             # If no JSON and no CSV, return empty list instead of error
+             # to prevent crash/hang
+            return jsonify({'top_picks': [], 'summary': {'total_analyzed': 0, 'avg_score': 0}})
         
         df = pd.read_csv(csv_path)
         
-        # Fetch real-time prices for CSV data
-        tickers = df['ticker'].head(20).tolist()
+        # DISABLED: Start Fetching real-time prices for CSV data
+        # Fetching prices individually causes timeouts on Render
         current_prices = {}
-        
+        """
+        tickers = df['ticker'].head(20).tolist()
         try:
             import math
             price_data = yf.download(tickers, period='1d', progress=False)
@@ -361,6 +364,8 @@ def get_us_smart_money():
                         current_prices[ticker] = 0
         except Exception as e:
             print(f"Error fetching US real-time prices: {e}")
+        """
+        # DISABLED: End Fetching
         
         top_picks = []
         for _, row in df.head(20).iterrows():
