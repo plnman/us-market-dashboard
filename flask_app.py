@@ -769,6 +769,78 @@ def get_us_calendar():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/us/stock-chart/<ticker>')
+def get_us_stock_chart(ticker):
+    """Get stock price history for charting"""
+    try:
+        import pandas as pd
+        from datetime import datetime
+        
+        period = request.args.get('period', '1y')
+        
+        # Determine CSV path (try full first, then light)
+        csv_path = 'us_daily_prices.csv'
+        if not os.path.exists(csv_path):
+            csv_path = 'us_daily_prices_light.csv'
+            
+        if not os.path.exists(csv_path):
+             return jsonify({'error': 'Price data not found.'}), 404
+             
+        # Read data
+        try:
+            # Optimize: Read only needed columns
+            df = pd.read_csv(csv_path)
+        except Exception as e:
+            return jsonify({'error': f"Error reading CSV: {str(e)}"}), 500
+            
+        # Filter by ticker - Case insensitive
+        df_ticker = df[df['ticker'].astype(str).str.upper() == ticker.upper()].copy()
+        
+        if df_ticker.empty:
+             return jsonify({'error': f'No data found for {ticker}'}), 404
+             
+        # Filter by period
+        df_ticker['date'] = pd.to_datetime(df_ticker['date'])
+        
+        if period != 'all':
+            days = 365 # Default 1y
+            if period == '1m': days = 30
+            elif period == '3m': days = 90
+            elif period == '6m': days = 180
+            elif period == '5y': days = 365 * 5
+            
+            cutoff_date = datetime.now() - timedelta(days=days)
+            df_ticker = df_ticker[df_ticker['date'] >= cutoff_date]
+            
+        # Format for ApexCharts
+        # series = [{x: timestamp, y: [open, high, low, close]}]
+        data = []
+        for _, row in df_ticker.iterrows():
+            data.append({
+                'x': int(row['date'].timestamp() * 1000), # JS needs milliseconds
+                'y': [
+                    float(row['open']),
+                    float(row['high']),
+                    float(row['low']),
+                    float(row['current_price']) # or 'close'
+                ]
+            })
+            
+        # Sort by date
+        data.sort(key=lambda x: x['x'])
+        
+        return jsonify({
+            'ticker': ticker,
+            'series': [{
+                'name': ticker,
+                'data': data
+            }]
+        })
+
+    except Exception as e:
+        print(f"Error serving chart for {ticker}: {e}")
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/us/technical-indicators/<ticker>')
 def get_technical_indicators(ticker):
     """Get technical indicators (RSI, MACD, Bollinger Bands, Support/Resistance)"""
