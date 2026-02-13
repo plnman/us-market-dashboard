@@ -699,6 +699,8 @@
         // --- US Market Dashboard ---
         async function updateUSMarketDashboard() {
             try {
+                if (typeof logDebug === 'function') logDebug("Fetching dashboard data...");
+
                 // Fetch all US data in parallel
                 const [portfolioRes, smartMoneyRes, etfFlowsRes, historyDatesRes] = await Promise.all([
                     fetch('/api/us/portfolio'),
@@ -707,30 +709,51 @@
                     fetch('/api/us/history-dates')
                 ]);
 
+                if (typeof logDebug === 'function') logDebug("Fetch completed. Parsing JSON...");
+
+                // Parse with individual error handling (though Promise.all ensures responses exist, JSON parse might fail)
                 const portfolioData = await portfolioRes.json();
                 const smartMoneyData = await smartMoneyRes.json();
                 const etfFlowsData = await etfFlowsRes.json();
                 const historyDatesData = await historyDatesRes.json();
 
+                if (typeof logDebug === 'function') logDebug("JSON Parsed. Rendering components...");
+
                 // Render Market Indices
-                if (portfolioData.market_indices) {
-                    renderUSMarketIndices(portfolioData.market_indices);
-                }
+                try {
+                    if (portfolioData.market_indices) {
+                        renderUSMarketIndices(portfolioData.market_indices);
+                        if (typeof logDebug === 'function') logDebug("Indices rendered.");
+                    }
+                } catch (e) { console.error("Indices error", e); if (typeof logDebug === 'function') logDebug(`Indices Error: ${e.message}`); }
 
                 // Populate history date selector
-                if (historyDatesData.dates) {
-                    populateUSHistoryDates(historyDatesData.dates);
-                }
+                try {
+                    if (historyDatesData.dates) {
+                        populateUSHistoryDates(historyDatesData.dates);
+                    }
+                } catch (e) { console.error("History Dates error", e); }
 
                 // Render Smart Money Picks
-                if (smartMoneyData.top_picks) {
-                    renderUSSmartMoneyPicks(smartMoneyData);
-                }
+                try {
+                    if (smartMoneyData.top_picks) {
+                        if (typeof logDebug === 'function') logDebug(`Rendering ${smartMoneyData.top_picks.length} picks...`);
+                        renderUSSmartMoneyPicks(smartMoneyData);
+                        if (typeof logDebug === 'function') logDebug("Picks rendered.");
+                    } else if (smartMoneyData.top_picks === undefined) {
+                        // Likely empty list from fallback
+                        renderUSSmartMoneyPicks({ top_picks: [], summary: {} });
+                        if (typeof logDebug === 'function') logDebug("Empty picks rendered.");
+                    }
+                } catch (e) { console.error("Smart Money error", e); if (typeof logDebug === 'function') logDebug(`Picks Error: ${e.message}`); }
 
                 // Render ETF Flows
-                if (etfFlowsData.top_inflows) {
-                    renderUSETFFlows(etfFlowsData);
-                }
+                try {
+                    if (etfFlowsData.top_inflows) {
+                        renderUSETFFlows(etfFlowsData);
+                        if (typeof logDebug === 'function') logDebug("ETF Flows rendered.");
+                    }
+                } catch (e) { console.error("ETF error", e); if (typeof logDebug === 'function') logDebug(`ETF Error: ${e.message}`); }
 
                 // Fetch and render Macro Analysis
                 try {
@@ -774,8 +797,11 @@
                     console.log('Calendar not available');
                 }
 
+                if (typeof logDebug === 'function') logDebug("Dashboard update complete.");
+
             } catch (e) {
                 console.error("Error updating US dashboard:", e);
+                if (typeof logDebug === 'function') logDebug(`Critical Dashboard Error: ${e.message}`);
             }
         }
 
@@ -1107,6 +1133,18 @@
             if (!table) return;
             table.innerHTML = '';
 
+            // Robust check for data
+            if (!data || !data.top_picks || !Array.isArray(data.top_picks)) {
+                console.warn('Invalid smart money data:', data);
+                table.innerHTML = '<tr><td colspan="9" class="p-4 text-center text-gray-500">데이터를 불러올 수 없습니다.</td></tr>';
+                return;
+            }
+
+            if (data.top_picks.length === 0) {
+                table.innerHTML = '<tr><td colspan="9" class="p-4 text-center text-gray-500">분석된 종목이 없습니다. (서버/파일 확인 필요)</td></tr>';
+                return;
+            }
+
             // Store picks data for later use
             window.usSmartMoneyPicks = data.top_picks;
 
@@ -1117,7 +1155,9 @@
                 summary.innerHTML = `<span class="text-purple-400">📅 분석일: ${analysisDate}</span> | 평균: ${avgScore}점`;
 
                 // Call updateDateHeaders function
-                updateDateHeaders(analysisDate);
+                if (typeof updateDateHeaders === 'function') {
+                    updateDateHeaders(analysisDate);
+                }
 
                 // Update last update time
                 const lastUpdateTimeEl = document.getElementById('last-update-time');
@@ -1196,13 +1236,19 @@
                 `;
 
                 // Add click handler
-                tr.addEventListener('click', () => loadUSStockChart(pick, idx));
+                tr.addEventListener('click', () => {
+                    if (typeof loadUSStockChart === 'function') {
+                        loadUSStockChart(pick, idx);
+                    }
+                });
                 table.appendChild(tr);
             });
 
             // Auto-load first stock
             if (data.top_picks.length > 0) {
-                loadUSStockChart(data.top_picks[0], 0);
+                if (typeof loadUSStockChart === 'function') {
+                    loadUSStockChart(data.top_picks[0], 0);
+                }
             }
         }
 
