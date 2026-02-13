@@ -166,7 +166,7 @@ def get_sector(ticker: str) -> str:
         _save_sector_cache(_sector_cache)
         return '-'
     """
-        return '-'
+    return '-'
 
 @app.route('/')
 def index():
